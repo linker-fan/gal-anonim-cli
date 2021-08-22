@@ -41,7 +41,7 @@ func SendRequest(addr string, method string, payload *map[string]interface{}) ([
 	}
 
 	if resp.StatusCode != 200 && resp.StatusCode != 201 {
-		return nil, fmt.Errorf("Response returned status code: %d\n", resp.StatusCode)
+		return nil, fmt.Errorf("Response returned status code: %d\nrzad", resp.StatusCode)
 	}
 
 	defer resp.Body.Close()
