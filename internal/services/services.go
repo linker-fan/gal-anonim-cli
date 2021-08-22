@@ -6,7 +6,7 @@ import (
 
 	"github.com/linker-fan/gal-anonim-cli/internal/config"
 	"github.com/linker-fan/gal-anonim-cli/internal/jwt"
-	"github.com/linker-fan/gal-anonim-cli/internal/utils"
+	"github.com/linker-fan/gal-anonim-cli/internal/requests"
 )
 
 var c config.Config
@@ -17,7 +17,7 @@ func Login(username, password, addr, pathToFile string) error {
 		"password": password,
 	}
 
-	data, err := utils.SendRequest(addr, "POST", &payload)
+	data, err := requests.SendRequest(addr, "POST", &payload)
 	if err != nil {
 		log.Printf("Login: utils.SendRequest failed: %v\n", err)
 		return err

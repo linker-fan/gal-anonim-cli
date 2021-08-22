@@ -4,6 +4,8 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"os"
+
+	"github.com/linker-fan/gal-anonim-cli/internal/utils"
 )
 
 type tokenJSONFile struct {
@@ -11,12 +13,11 @@ type tokenJSONFile struct {
 }
 
 func SaveTokenToFile(path string, token string) error {
-	/*
-		err := utils.ValidatePath(path)
-		if err != nil {
-			return err
-		}
-	*/
+
+	err := utils.ValidatePath(path)
+	if err != nil {
+		return err
+	}
 
 	file, err := os.OpenFile(path, os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
