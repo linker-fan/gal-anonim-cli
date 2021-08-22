@@ -3,3 +3,5 @@ serverAPI:
   port: "8888"
   registerEndpoint: "/users/register"
   loginEndpoint: "/users/login"
+local:
+  tokenFilePath: "/tmp/token/token.json"

@@ -15,6 +15,9 @@ type Config struct {
 		RegisterEndpoint string `yaml:"registerEndpoint"`
 		LoginEndpoint    string `yaml:"loginEndpoint"`
 	} `yaml:"serverAPI"`
+	Local struct {
+		TokeFilePath string `yaml:"tokenFilePath"`
+	} `yaml:"local"`
 }
 
 func NewConfig(path string) (*Config, error) {
