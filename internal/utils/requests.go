@@ -8,6 +8,8 @@ import (
 	"log"
 	"net/http"
 	"time"
+
+	"github.com/linker-fan/gal-anonim-cli/internal/jwt"
 )
 
 func SendRequest(addr string, method string, payload *map[string]interface{}) ([]byte, error) {
@@ -54,4 +56,15 @@ func SendRequest(addr string, method string, payload *map[string]interface{}) ([
 
 	return body, nil
 
+}
+
+func prepareAuthHeaders(req *http.Request, path string) (*http.Request, error) {
+	//get token from file
+	token, err := jwt.LoadTokenFromFile(path)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Set("Authorization", fmt.Sprintf("Bearer %s", token))
+	return req, nil
 }
